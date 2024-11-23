@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "blaze-printer",
+	"version": "${version}",
+	"name": "BLAZE-PRINTER",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/blaze-printer/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"me.heronerin.BlazePrinter"
+		]
+	},
+	"mixins": [
+		"blaze-printer.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+	}
+}
