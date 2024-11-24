@@ -29,6 +29,7 @@ public class Utils {
             Blocks.TRIPWIRE, new Vector4f(211, 211, 211, 0.5f)
     );
     public static final Vector4f WRONG_COLOR = new Vector4f(0.8f, 0, 0, 0.5f);
+    public static final Vector4f ORIGIN_PREVIEW = new Vector4f(255/256f, 215/256f, 0, 0.5f);
 
 
 
@@ -86,6 +87,7 @@ public class Utils {
         return block_to_vec.getOrDefault(b, new Vector4f(0, 0, 0, 0.5f));
     }
 
+    @SuppressWarnings("unchecked")
     public static CommandRegistryAccess getCommandLineRegFromReg(DefaultedRegistry<?> reg){
         return new CommandRegistryAccess() {
             @Override
@@ -94,4 +96,5 @@ public class Utils {
             }
         };
     }
+
 }

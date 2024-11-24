@@ -20,12 +20,17 @@ public class MainPrinter {
 
     // ALL BLOCK ARE RELATIVE TO THE ORIGIN
     public ArrayList<Pair<BlockPos, Vector4f>> cubes_to_render = new ArrayList<>();
+    public Pair<BlockPos, Vector4f> origin_preview = null;
+
+
     public Map<BlockPos, PrintBlock> blocks = new HashMap<>();
 
     public BlockPos orgin = null;
 
     // Called when world is changed
     public void updateBlock(BlockPos pos, BlockState state){
+        if (orgin == null) return;
+
         pos = pos.subtract(orgin);
         if (!blocks.containsKey(pos)) return;
         PrintBlock pb = blocks.get(pos);
@@ -36,6 +41,7 @@ public class MainPrinter {
     }
     public void updateAllBlocks(){
         if (MinecraftClient.getInstance().world == null) return;
+        if (orgin == null) return;
 
         blocks.forEach((pos, block)->{
             BlockState bs =  MinecraftClient.getInstance().world.getBlockState(pos.add(orgin));
