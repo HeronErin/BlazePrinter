@@ -10,19 +10,16 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.stream.Stream;
-
 
 @Mixin(DebugRenderer.class)
 public abstract class DebugRendererMixin implements AutoCloseable {
+    // Render a filled in box
     private void renderCube(Pair<BlockPos, Vector4f> cube, MatrixStack matrices, VertexConsumerProvider.Immediate vertexConsumers, double cameraX, double cameraY, double cameraZ){
             BlockPos blockPos = cube.getLeft();
             Box outlineBox = new Box(blockPos);
@@ -39,6 +36,8 @@ public abstract class DebugRendererMixin implements AutoCloseable {
                     cube.getRight().x ,cube.getRight().y, cube.getRight().z, cube.getRight().w
             );
     }
+
+    // Render the outline of a box
     private void renderBox(Pair<BlockPos, Vector4f> cube, MatrixStack matrices, VertexConsumerProvider.Immediate vertexConsumers, double cameraX, double cameraY, double cameraZ){
         BlockPos blockPos = cube.getLeft();
         Box outlineBox = new Box(blockPos);

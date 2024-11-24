@@ -1,6 +1,9 @@
 package me.heronerin.gui;
-// CREDIT: https://github.com/maruohon/litematica/blob/pre-rewrite/fabric/1.20.1/src/main/java/fi/dy/masa/litematica/gui/Icons.java
 
+
+// CREDIT: https://github.com/maruohon/litematica/blob/pre-rewrite/fabric/1.20.1/src/main/java/fi/dy/masa/litematica/gui/Icons.java
+// Completely stole the icons form Litematica
+// were both lgplv3 so its fine, right..........
 
 
 import java.io.File;

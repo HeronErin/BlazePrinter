@@ -9,8 +9,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+// Inform printer of updated block
+
 @Mixin(ClientWorld.class)
 public class ClientWorldMixin {
+
     @Inject(at = @At("RETURN"), method = "handleBlockUpdate")
     public void handleBlockUpdate(BlockPos pos, BlockState state, int flags, CallbackInfo ci){;
         MainPrinter.getInstance().updateBlock(pos, state);

@@ -10,13 +10,11 @@ import fi.dy.masa.malilib.gui.interfaces.ITextFieldListener;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3i;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3i;
 
-import java.util.Arrays;
+// I'll be real, this is a damned mess
 
-public class GuiElement {
+public class GuiElements {
     public static class BlockPositionMutable{
         @Nullable Integer x;
         @Nullable Integer y;

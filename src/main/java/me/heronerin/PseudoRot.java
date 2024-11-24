@@ -2,6 +2,9 @@ package me.heronerin;
 
 import net.minecraft.client.MinecraftClient;
 
+// When printing you need to decouple client rotation with server rotation.
+// This class is the public controller for this, soo PlayerMoveC2SPacketMixin and PlayerPositionLookS2CPacketMixin
+// for how rotation faking is actually done.
 public class PseudoRot {
     public static boolean do_fake_rotation = false;
     public static float server_yaw = 0;

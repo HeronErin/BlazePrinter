@@ -9,6 +9,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
+
+
     @Inject(at=@At(value="HEAD"), method = "tick")
     void tick(CallbackInfo ci){
         PseudoRot.tick();
