@@ -3,6 +3,7 @@ package me.heronerin.printer;
 import me.heronerin.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
@@ -29,16 +30,31 @@ public class MainPrinter {
         if (!blocks.containsKey(pos)) return;
         PrintBlock pb = blocks.get(pos);
 
-        pb.is_placed = pb.type == state.getBlock();
+        pb.is_correctly_placed = pb.type == state.getBlock();
+        pb.is_incorrectly_placed =  !pb.is_correctly_placed && !state.isAir();
         resetRenderBlocks();
     }
+    public void updateAllBlocks(){
+        if (MinecraftClient.getInstance().world == null) return;
 
+        blocks.forEach((pos, block)->{
+            BlockState bs =  MinecraftClient.getInstance().world.getBlockState(pos.add(orgin));
+            block.is_correctly_placed = block.type == bs.getBlock();
+            block.is_incorrectly_placed =  !block.is_correctly_placed && !bs.isAir();;
+        });
+        resetRenderBlocks();
+    }
     public void resetRenderBlocks(){
         cubes_to_render.clear();
         if (orgin != null)
-            for (PrintBlock block : blocks.values())
-                if (!block.is_placed)
+            for (PrintBlock block : blocks.values()) {
+                if (block.is_correctly_placed) continue;
+
+                if (block.is_incorrectly_placed)
+                    cubes_to_render.add(new Pair<>(block.pos.add(orgin), Utils.WRONG_COLOR));
+                else
                     cubes_to_render.add(new Pair<>(block.pos.add(orgin), Utils.block_to_color(block.type)));
+            }
 
     }
     public void addGrid(BlockPos bp, Block block, int size, boolean isInitialSet){
@@ -48,7 +64,7 @@ public class MainPrinter {
                 blocks.put(relbp, new PrintBlock(relbp, block));
             }
         }
-        resetRenderBlocks();
+        updateAllBlocks();
     }
 
 

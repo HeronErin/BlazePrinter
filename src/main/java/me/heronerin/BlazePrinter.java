@@ -38,11 +38,11 @@ public class BlazePrinter implements ClientModInitializer {
                 dispatcher.register(
                         ClientCommandManager.literal("p")
                                 // /p clear
-                                .then(ClientCommandManager.literal("clear")).executes((_c)->{
+                                .then(ClientCommandManager.literal("clear").executes((ignored)->{
                                     MainPrinter.getInstance().blocks.clear();
                                     MainPrinter.getInstance().resetRenderBlocks();
                                     return 0;
-                                })
+                                }))
                                 // /p grid ~ ~ ~ minecraft:stone true
                                 .then(ClientCommandManager.literal("grid").then(
                                         ClientCommandManager.argument("position", BlockPosArgumentType.blockPos()).then(
@@ -103,9 +103,9 @@ public class BlazePrinter implements ClientModInitializer {
         try {
             pos = context.getArgument("position", PosArgument.class);
 
-        } catch (IllegalArgumentException _e){}
+        } catch (IllegalArgumentException ignored){}
 
-        BlockPos bp = pos != null ? blockArgumentToPos(pos) : MinecraftClient.getInstance().player.getBlockPos();
+        BlockPos bp = pos != null ? blockArgumentToPos(pos) : BlockPos.ofFloored(MinecraftClient.getInstance().player.getPos());
 
         MainPrinter.getInstance().orgin = bp;
         MainPrinter.getInstance().resetRenderBlocks();

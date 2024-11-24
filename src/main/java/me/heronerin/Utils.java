@@ -28,6 +28,8 @@ public class Utils {
             Blocks.CACTUS, new Vector4f(0, 1, 0, 0.5f),
             Blocks.TRIPWIRE, new Vector4f(211, 211, 211, 0.5f)
     );
+    public static final Vector4f WRONG_COLOR = new Vector4f(0.8f, 0, 0, 0.5f);
+
 
 
     // Client side argument conversion. This is needed as normal classes expect this to be done server side
@@ -38,11 +40,11 @@ public class Utils {
             DefaultPosArgumentAccessor acc = (DefaultPosArgumentAccessor) dfa;
             PlayerEntity p = MinecraftClient.getInstance().player;
 
-            return new BlockPos(
-                    (int) acc.getX().toAbsoluteCoordinate(p.getX()),
-                    (int) acc.getY().toAbsoluteCoordinate(p.getY()),
-                    (int) acc.getZ().toAbsoluteCoordinate(p.getZ())
-            );
+            return BlockPos.ofFloored(new Vec3d(
+                    acc.getX().toAbsoluteCoordinate(p.getX()),
+                    acc.getY().toAbsoluteCoordinate(p.getY()),
+                    acc.getZ().toAbsoluteCoordinate(p.getZ())
+            ));
         }else{
             return BlockPos.ofFloored(Utils.toAbsolutePos((LookingPosArgumentAccessor) dfa));
 

@@ -7,13 +7,14 @@ import net.minecraft.util.math.BlockPos;
 public class PrintBlock {
     public final BlockPos pos;
     public final Block type;
-    public boolean is_placed;
+    public boolean is_correctly_placed;
+    public boolean is_incorrectly_placed = false;
 
 
     public PrintBlock(BlockPos pos, Block type) {
         this.pos = pos;
         this.type = type;
-        this.is_placed = false;
+        this.is_correctly_placed = false;
 
     }
 }
