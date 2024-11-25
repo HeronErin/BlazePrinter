@@ -3,7 +3,6 @@ package me.heronerin.printer;
 import me.heronerin.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
@@ -15,7 +14,7 @@ import java.util.Map;
 
 public class MainPrinter {
     private static MainPrinter instance = new MainPrinter();
-    public static MainPrinter getInstance(){return instance;}
+    public static MainPrinter getInstance(){ return instance; }
 
 
     // ALL BLOCK ARE RELATIVE TO THE ORIGIN

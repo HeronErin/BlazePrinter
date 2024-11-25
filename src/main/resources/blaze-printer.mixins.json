@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "DebugRendererMixin",
-    "DefaultPosArgumentAccessor",
-    "LookingPosArgumentAccessor",
+
     "PlayerMoveC2SPacketMixin",
     "PlayerMoveC2SPacketMixin$FullMixin",
     "PlayerMoveC2SPacketMixin$LookAndOnGroundMixin",

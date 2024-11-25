@@ -18,7 +18,7 @@ import static me.heronerin.gui.GuiElements.createPositionEditor;
 public class PositioningTabGui extends ConfigGui.Tab{
     private static class GuiLayer extends GuiRenderLayerEditBase{
         ConfigGui parent;
-        // A loss version of origin that typically BUT NOT ALWAYS corresponds to the origin
+        // A loose version of origin that typically BUT NOT ALWAYS corresponds to the origin
         private GuiElements.BlockPositionMutable originMut;
         GuiLayer(ConfigGui parent){
             this.parent = parent;
