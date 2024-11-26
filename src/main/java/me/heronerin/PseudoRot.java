@@ -2,6 +2,10 @@ package me.heronerin;
 
 import net.minecraft.client.MinecraftClient;
 
+// TODO: Use livingEntity -> public void travel(Vec3d movementInput) to fix sprint
+
+
+
 // When printing you need to decouple client rotation with server rotation.
 // This class is the public controller for this, soo PlayerMoveC2SPacketMixin and PlayerPositionLookS2CPacketMixin
 // for how rotation faking is actually done.

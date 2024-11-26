@@ -1,9 +1,14 @@
 package me.heronerin.printer;
 
+import fi.dy.masa.malilib.hotkeys.IKeybind;
+import fi.dy.masa.malilib.hotkeys.KeyAction;
+import me.heronerin.PseudoRot;
 import me.heronerin.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.toast.SystemToast;
+import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import org.joml.Vector4f;
@@ -72,6 +77,18 @@ public class MainPrinter {
         updateAllBlocks();
     }
 
+    public boolean is_printing = false;
+    public static boolean togglePrinter(KeyAction keyAction, IKeybind iKeybind) {
+        MainPrinter mp = MainPrinter.getInstance();
+        mp.is_printing = !mp.is_printing;
+        PseudoRot.do_fake_rotation = mp.is_printing;
+        SystemToast.show(
+                MinecraftClient.getInstance().getToastManager(),
+                SystemToast.Type.TUTORIAL_HINT,
+                Text.of("Printer"),
+                Text.of("Printer %s!".formatted(mp.is_printing ? "enabled" : "disabled"))
+        );
 
-
+        return true;
+    }
 }

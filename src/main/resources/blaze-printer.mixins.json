@@ -2,19 +2,21 @@
   "required": true,
   "package": "me.heronerin.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [
-    "DebugRendererMixin",
-
-    "PlayerMoveC2SPacketMixin",
-    "PlayerMoveC2SPacketMixin$FullMixin",
-    "PlayerMoveC2SPacketMixin$LookAndOnGroundMixin",
-    "PlayerPositionLookS2CPacketMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
     "ClientWorldMixin",
-    "MinecraftClientMixin"
+    "DebugRendererMixin",
+    "EntityMixin",
+    "GameRendererAccessor",
+    "MinecraftClientMixin",
+    "PlayerMoveC2SPacketMixin",
+    "PlayerMoveC2SPacketMixin$FullMixin",
+    "PlayerMoveC2SPacketMixin$LookAndOnGroundMixin",
+    "PlayerPositionLookS2CPacketMixin"
+  ],
+  "mixins": [
+    "EntityMixin$LivingEntityMixin"
   ]
 }

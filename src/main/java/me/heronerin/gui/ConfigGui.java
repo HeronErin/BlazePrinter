@@ -2,9 +2,7 @@ package me.heronerin.gui;
 
 import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.gui.GuiConfigsBase;
-import fi.dy.masa.malilib.gui.button.ButtonBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
-import fi.dy.masa.malilib.gui.button.IButtonActionListener;
 import org.spongepowered.include.com.google.common.collect.ImmutableList;
 
 import java.util.List;
@@ -39,7 +37,8 @@ public class ConfigGui extends GuiConfigsBase {
     }
     private static final ImmutableList<? extends Tab> TABS = ImmutableList.of(
             new SettingsTabGui(),
-            new PositioningTabGui()
+            new OriginPositioningTabGui(),
+            new SchematicGUI()
     );
     private Tab current_tab = TABS.get(0);
 

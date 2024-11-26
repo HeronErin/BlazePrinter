@@ -29,16 +29,6 @@ public class MinecraftClientMixin {
 
     @Inject(method = "onInitFinished", at = @At("HEAD"))
     private void init_minecraft(CallbackInfo ci) {
-        OPEN_CONFIG.getKeybind().setCallback((keyAction, iKeybind) -> {
-            System.out.println("Open sesame!");
-            if (MinecraftClient.getInstance().world != null)
-                MinecraftClient.getInstance().setScreen(new ConfigGui());
-            return MinecraftClient.getInstance().world != null;
-        });
-        InitializationHandler.getInstance().registerInitializationHandler(() -> {
-            System.out.println("INIT sesame!");
-            ConfigManager.getInstance().registerConfigHandler(MOD_ID, new BlazePrinter());
-            InputEventHandler.getKeybindManager().registerKeybindProvider(InputHandler.getInstance());
-        });
+        BlazePrinter.init();
     }
 }
