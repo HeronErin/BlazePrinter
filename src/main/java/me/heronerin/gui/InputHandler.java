@@ -3,11 +3,10 @@ package me.heronerin.gui;
 import fi.dy.masa.malilib.hotkeys.IHotkey;
 import fi.dy.masa.malilib.hotkeys.IKeybindManager;
 import fi.dy.masa.malilib.hotkeys.IKeybindProvider;
-import fi.dy.masa.malilib.hotkeys.IKeyboardInputHandler;
 import me.heronerin.BlazePrinter;
 
 public class InputHandler implements IKeybindProvider {
-    private static InputHandler instance = new InputHandler();
+    private static final InputHandler instance = new InputHandler();
     public static InputHandler getInstance(){
         return instance;
     }

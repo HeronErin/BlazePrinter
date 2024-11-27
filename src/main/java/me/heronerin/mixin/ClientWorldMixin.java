@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ClientWorldMixin {
 
     @Inject(at = @At("RETURN"), method = "handleBlockUpdate")
-    public void handleBlockUpdate(BlockPos pos, BlockState state, int flags, CallbackInfo ci){;
+    public void handleBlockUpdate(BlockPos pos, BlockState state, int flags, CallbackInfo ci){
         MainPrinter.getInstance().updateBlock(pos, state);
     }
 

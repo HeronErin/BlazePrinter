@@ -11,17 +11,12 @@ import fi.dy.masa.malilib.config.options.ConfigDouble;
 import fi.dy.masa.malilib.config.options.ConfigHotkey;
 import fi.dy.masa.malilib.event.InitializationHandler;
 import fi.dy.masa.malilib.event.InputEventHandler;
-import fi.dy.masa.malilib.hotkeys.IKeybind;
-import fi.dy.masa.malilib.hotkeys.KeyAction;
-import fi.dy.masa.malilib.util.JsonUtils;
 import fi.dy.masa.malilib.util.FileUtils;
-
-
+import fi.dy.masa.malilib.util.JsonUtils;
 import me.heronerin.gui.ConfigGui;
 import me.heronerin.gui.InputHandler;
 import me.heronerin.printer.MainPrinter;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.data.Main;
 import org.spongepowered.include.com.google.common.collect.ImmutableList;
 
 import java.io.File;

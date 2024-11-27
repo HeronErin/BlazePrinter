@@ -13,7 +13,7 @@ public class ConfigGui extends GuiConfigsBase {
     public static abstract class Tab {
         public abstract String getTitle();
         public abstract List<ConfigOptionWrapper> getConfigs();
-        public void initGui(ConfigGui screen){};
+        public void initGui(ConfigGui screen){}
     }
 
     public static void createButtons(GuiBase gui, ConfigGui config) {

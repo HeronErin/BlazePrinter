@@ -14,7 +14,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import org.joml.Vector4f;
-import org.spongepowered.include.com.google.common.collect.ImmutableSet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainPrinter {
-    private static MainPrinter instance = new MainPrinter();
+    private static final MainPrinter instance = new MainPrinter();
     public static MainPrinter getInstance(){ return instance; }
 
 
@@ -58,7 +57,7 @@ public class MainPrinter {
         blocks.forEach((pos, block)->{
             BlockState bs =  MinecraftClient.getInstance().world.getBlockState(pos.add(orgin));
             block.is_correctly_placed = block.type == bs.getBlock();
-            block.is_incorrectly_placed =  !block.is_correctly_placed && !bs.isAir();;
+            block.is_incorrectly_placed =  !block.is_correctly_placed && !bs.isAir();
         });
         resetRenderBlocks();
     }

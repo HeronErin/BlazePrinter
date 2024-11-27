@@ -10,5 +10,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface GameRendererAccessor {
 
     @Accessor(value="buffers")
-    public BufferBuilderStorage getBuffers();
+    BufferBuilderStorage getBuffers();
 }

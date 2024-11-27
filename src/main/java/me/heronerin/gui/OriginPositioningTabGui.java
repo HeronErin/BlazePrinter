@@ -26,7 +26,7 @@ public class OriginPositioningTabGui extends ConfigGui.Tab{
         ConfigGui parent;
 
         // A loose version of origin that typically BUT NOT ALWAYS corresponds to the origin
-        private PositionEditorGUI originElement;
+        private final PositionEditorGUI originElement;
         GuiLayer(ConfigGui parent){
             this.parent = parent;
             this.title = parent.getTitleString();

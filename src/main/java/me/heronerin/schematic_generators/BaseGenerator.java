@@ -1,7 +1,6 @@
 package me.heronerin.schematic_generators;
 
 import net.minecraft.block.Block;
-import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;

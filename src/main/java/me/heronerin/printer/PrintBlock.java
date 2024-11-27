@@ -1,6 +1,6 @@
 package me.heronerin.printer;
 
-import  net.minecraft.block.Block;
+import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 
 // A block with the desire to be printed

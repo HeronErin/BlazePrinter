@@ -6,14 +6,14 @@ package me.heronerin.gui;
 // were both lgplv3 so its fine, right..........
 
 
-import java.io.File;
-
-import me.heronerin.BlazePrinter;
-import net.minecraft.util.Identifier;
 import fi.dy.masa.malilib.gui.interfaces.IFileBrowserIconProvider;
 import fi.dy.masa.malilib.gui.interfaces.IGuiIcon;
 import fi.dy.masa.malilib.render.RenderUtils;
+import me.heronerin.BlazePrinter;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
+
+import java.io.File;
 
 public enum Icons implements IGuiIcon, IFileBrowserIconProvider
 {
@@ -50,7 +50,7 @@ public enum Icons implements IGuiIcon, IFileBrowserIconProvider
     private final int w;
     private final int h;
 
-    private Icons(int u, int v, int w, int h)
+    Icons(int u, int v, int w, int h)
     {
         this.u = u;
         this.v = v;
