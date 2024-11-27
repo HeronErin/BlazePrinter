@@ -39,8 +39,8 @@ public class SchematicGUI extends ConfigGui.Tab{
                 blockViewWidget.blocks = blocks;
             });
 
-            dropDownMenu = new WidgetDropDownList<BaseGenerator>(
-                    10, 50, 150, 20, -1,
+            dropDownMenu = new WidgetDropDownList<>(
+                    10, 50, 150, 20, 400,
                     10,
                     MainPrinter.getInstance().generatorOptions,
                     BaseGenerator::getDisplayName
@@ -56,64 +56,14 @@ public class SchematicGUI extends ConfigGui.Tab{
 
             ConfigGui.createButtons(this, this.parent);
 
-            this.addWidget(blockViewWidget);
-
-
             this.addWidget(dropDownMenu);
+
+            this.addWidget(blockViewWidget);
         }
         @Override
         protected LayerRange getLayerRange() {
             return null;
         }
-
-        @Override
-        public void render(DrawContext drawContext, int x, int y, float partialTicks){
-            super.render(drawContext, x, y, partialTicks);
-            double scaleFactor = MinecraftClient.getInstance().getWindow().getScaleFactor();
-
-
-//
-//
-//            MatrixStack matrices = drawContext.getMatrices();
-//            int width = (int)(50 * scaleFactor);
-//            int height = (int)(50 * scaleFactor);
-//            int x_max = x + width;
-//            int y_max = y + height;
-//
-//            RenderUtils.drawOutline(x, y, width, height, 0xFFFFFFFF);
-//            matrices.push();
-//            // Translate the matrix master schematic render location
-//            matrices.translate((float) (x + width/2), (float) (y + height/2), (float) (150));
-//
-//            // Apply scaling
-//            matrices.multiplyPositionMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
-//
-//            matrices.scale((float) (4.0D * scaleFactor), (float) (4.0D * scaleFactor), (float) (4.0D * scaleFactor));
-//            // Apply rotation
-//            matrices.multiply(RotationAxis.of(new Vector3f(0.5f, -1f, 0)).rotationDegrees(45));
-////
-//            for (int X = 0; X < 10; X++) {
-//                for (int Y = 0; Y < 10; Y++) {
-//                    matrices.push();
-//                    matrices.translate(X, 0, Y);
-//
-//                    // Render the block
-//                    this.client.getBlockRenderManager().renderBlockAsEntity(
-//                            (X+Y)%2==0 ? Blocks.TRIPWIRE.getDefaultState() : Blocks.YELLOW_WOOL.getDefaultState(),
-//                            matrices,
-//                            drawContext.getVertexConsumers(),
-//                            15728880, // Light value
-//                            OverlayTexture.DEFAULT_UV
-//                    );
-//
-//                    matrices.pop(); // Revert transformations for the next block
-//                }
-//            }
-//            matrices.pop(); // Revert the initial push
-
-
-        }
-
     }
 
     @Override

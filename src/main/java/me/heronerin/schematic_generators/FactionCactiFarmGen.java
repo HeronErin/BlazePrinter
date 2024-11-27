@@ -8,26 +8,21 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompactCactiGen extends BaseGenerator{
+public class FactionCactiFarmGen extends BaseGenerator{
     @Override
     public int getWidthTilingResolution() {
-        return 1;
-    }
-
-    @Override
-    public Integer getYTilingResolution() {
-        return 4;
+        return 2;
     }
 
     @Override
     public String getDisplayName() {
-        return "Compact Cactus Farm";
+        return "Faction Cactus farm";
     }
 
     @Override
     public List<Pair<BlockPos, Block>> generate(int width, int height) {
         List<Pair<BlockPos, Block>> ret = new ArrayList<>();
-        for (int x = 0; x < width; x++) for (int z = 0; z < height; z++){
+        for (int x = 0; x < width; x++) for (int z = 0; z < height; z+=2){
             final boolean isEven = (x + z) % 2 == 0;
             ret.add(new Pair<>(
                     new BlockPos(x, 0, z),
@@ -35,19 +30,26 @@ public class CompactCactiGen extends BaseGenerator{
             ));
             ret.add(new Pair<>(
                     new BlockPos(x, 1, z),
-                    isEven ? Blocks.TRIPWIRE : Blocks.CACTUS
+                    isEven ? Blocks.AIR : Blocks.CACTUS
             ));
             ret.add(new Pair<>(
                     new BlockPos(x, 2, z),
-                    isEven ? Blocks.SAND : Blocks.AIR
+                    isEven ? Blocks.OAK_FENCE : Blocks.AIR
             ));
             ret.add(new Pair<>(
                     new BlockPos(x, 3, z),
-                    isEven ? Blocks.CACTUS : Blocks.TRIPWIRE
+                    isEven ? Blocks.SAND : Blocks.AIR
             ));
-
+            ret.add(new Pair<>(
+                    new BlockPos(x, 4, z),
+                    isEven ? Blocks.CACTUS : Blocks.AIR
+            ));
+            ret.add(new Pair<>(
+                    new BlockPos(x, 5, z),
+                    isEven ? Blocks.AIR : Blocks.OAK_FENCE
+            ));
         }
-        return ret;
 
+        return ret;
     }
 }

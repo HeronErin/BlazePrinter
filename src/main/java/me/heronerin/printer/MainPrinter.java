@@ -6,6 +6,8 @@ import me.heronerin.PseudoRot;
 import me.heronerin.Utils;
 import me.heronerin.schematic_generators.BaseGenerator;
 import me.heronerin.schematic_generators.CompactCactiGen;
+import me.heronerin.schematic_generators.FactionCactiFarmGen;
+import me.heronerin.schematic_generators.SemiCompactCactiGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
@@ -35,7 +37,9 @@ public class MainPrinter {
     public BlockPos orgin = null;
 
     public final List<BaseGenerator> generatorOptions = List.of(
-            new CompactCactiGen()
+            new FactionCactiFarmGen(),
+            new CompactCactiGen(),
+            new SemiCompactCactiGen()
     );
 
     // Called when world is changed

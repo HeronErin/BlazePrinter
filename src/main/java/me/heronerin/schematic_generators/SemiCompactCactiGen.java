@@ -8,12 +8,11 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompactCactiGen extends BaseGenerator{
+public class SemiCompactCactiGen extends BaseGenerator {
     @Override
     public int getWidthTilingResolution() {
-        return 1;
+        return 4;
     }
-
     @Override
     public Integer getYTilingResolution() {
         return 4;
@@ -21,13 +20,13 @@ public class CompactCactiGen extends BaseGenerator{
 
     @Override
     public String getDisplayName() {
-        return "Compact Cactus Farm";
+        return "Semi-Compact Cactus Farm";
     }
 
     @Override
     public List<Pair<BlockPos, Block>> generate(int width, int height) {
         List<Pair<BlockPos, Block>> ret = new ArrayList<>();
-        for (int x = 0; x < width; x++) for (int z = 0; z < height; z++){
+        for (int x = 0; x < width; x++) for (int z = 0; z < height; z+=4){
             final boolean isEven = (x + z) % 2 == 0;
             ret.add(new Pair<>(
                     new BlockPos(x, 0, z),
@@ -48,6 +47,5 @@ public class CompactCactiGen extends BaseGenerator{
 
         }
         return ret;
-
     }
 }
