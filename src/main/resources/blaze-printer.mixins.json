@@ -9,6 +9,7 @@
     "ClientWorldMixin",
     "DebugRendererMixin",
     "EntityMixin",
+    "EntityMixin$LivingEntityMixin",
     "GameRendererAccessor",
     "MinecraftClientMixin",
     "PlayerMoveC2SPacketMixin",
@@ -17,6 +18,6 @@
     "PlayerPositionLookS2CPacketMixin"
   ],
   "mixins": [
-    "EntityMixin$LivingEntityMixin"
+    "WidgetDropDownListMixin"
   ]
 }

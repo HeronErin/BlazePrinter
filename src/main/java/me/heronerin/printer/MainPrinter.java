@@ -4,6 +4,8 @@ import fi.dy.masa.malilib.hotkeys.IKeybind;
 import fi.dy.masa.malilib.hotkeys.KeyAction;
 import me.heronerin.PseudoRot;
 import me.heronerin.Utils;
+import me.heronerin.schematic_generators.BaseGenerator;
+import me.heronerin.schematic_generators.CompactCactiGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
@@ -12,9 +14,11 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import org.joml.Vector4f;
+import org.spongepowered.include.com.google.common.collect.ImmutableSet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainPrinter {
@@ -30,6 +34,10 @@ public class MainPrinter {
     public Map<BlockPos, PrintBlock> blocks = new HashMap<>();
 
     public BlockPos orgin = null;
+
+    public final List<BaseGenerator> generatorOptions = List.of(
+            new CompactCactiGen()
+    );
 
     // Called when world is changed
     public void updateBlock(BlockPos pos, BlockState state){

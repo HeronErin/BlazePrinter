@@ -21,4 +21,19 @@ public class Utils {
     }
 
 
+
+    public static interface OnDropdownMenuChangeCallback {
+        public void onSelectionChange(int index);
+    }
+    private static OnDropdownMenuChangeCallback stashedDropdownMenuChangeCallback = null;
+    public static synchronized OnDropdownMenuChangeCallback getAndResetStashedDropdownMenuCallback(){
+        OnDropdownMenuChangeCallback s = stashedDropdownMenuChangeCallback;
+        stashedDropdownMenuChangeCallback = null;
+        return s;
+    }
+    public static synchronized void setStashedDropdownMenuCallback(OnDropdownMenuChangeCallback osci){
+        stashedDropdownMenuChangeCallback = osci;
+    }
+
+
 }
