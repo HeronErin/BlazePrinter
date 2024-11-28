@@ -13,11 +13,11 @@ import org.jetbrains.annotations.Nullable;
 
 import static fi.dy.masa.malilib.gui.GuiBase.COLOR_WHITE;
 
-public class PositionEditorGUI {
+public class PositionEditorWidget {
     private Integer labelWidth = null;
     Integer[] coords;
     private GuiTextFieldInteger[] fields = null;
-    public PositionEditorGUI(
+    public PositionEditorWidget(
             @Nullable Integer x,
             @Nullable Integer y,
             @Nullable Integer z){
@@ -47,33 +47,30 @@ public class PositionEditorGUI {
             gui.addTextField(fields[i], new ITextFieldListener() {
                 @Override
                 public boolean onTextChange(TextFieldWidget textField) {
-                    PositionEditorGUI.this.coords[finalI] = textField.getText().isEmpty() ? null : Integer.parseInt(textField.getText());
+                    coords[finalI] = textField.getText().isEmpty() ? null : Integer.parseInt(textField.getText());
 
-                    positionEditCallback.updatePosition(PositionEditorGUI.this.coords[0], PositionEditorGUI.this.coords[1], PositionEditorGUI.this.coords[2]);
+                    positionEditCallback.updatePosition(coords[0], coords[1], coords[2]);
                     return false;
                 }
             });
-            gui.addButton(new ButtonGeneric(x + wx + 70, y + i * 16 + 1, Icons.BUTTON_PLUS_MINUS_16, "Left click = minus\nRight click = add"), new IButtonActionListener() {
-                @Override
-                public void actionPerformedWithButton(ButtonBase button, int mouseButton) {
-                    int amount = mouseButton == 1 ? -1 : 1;
-                    if (GuiBase.isCtrlDown()) { amount *= 100; }
-                    if (GuiBase.isShiftDown()) { amount *= 10; }
-                    if (GuiBase.isAltDown()) { amount *= 5; }
+            gui.addButton(new ButtonGeneric(x + wx + 70, y + i * 16 + 1, Icons.BUTTON_PLUS_MINUS_16, "Left click = minus\nRight click = add"), (button, mouseButton) -> {
+                int amount = mouseButton == 1 ? -1 : 1;
+                if (GuiBase.isCtrlDown()) { amount *= 100; }
+                if (GuiBase.isShiftDown()) { amount *= 10; }
+                if (GuiBase.isAltDown()) { amount *= 5; }
 
-                    Integer from = PositionEditorGUI.this.coords[finalI];
-                    PositionEditorGUI.this.coords[finalI] = from == null ? null : from + amount;
-                    PositionEditorGUI.this.sync();
+                Integer from = coords[finalI];
+                coords[finalI] = from == null ? null : from + amount;
+                this.sync();
 
-                    positionEditCallback.updatePosition(PositionEditorGUI.this.coords[0], PositionEditorGUI.this.coords[1], PositionEditorGUI.this.coords[2]);
-                }
+                positionEditCallback.updatePosition(coords[0], coords[1], coords[2]);
             });
         }
 
         ButtonGeneric moveToPlayer = new ButtonGeneric(x + wx - 2, y + 3 * 16 + 2, 70 + 16, 16, "Move to player");
         gui.addButton(moveToPlayer, (button1, mouseButton) -> {
             this.formBlockPos(MinecraftClient.getInstance().player.getBlockPos());
-            positionEditCallback.updatePosition(PositionEditorGUI.this.coords[0], PositionEditorGUI.this.coords[1], PositionEditorGUI.this.coords[2]);
+            positionEditCallback.updatePosition(coords[0], coords[1], coords[2]);
 
         });
         labelWidth = wx;

@@ -72,9 +72,8 @@ public abstract class DebugRendererMixin implements AutoCloseable {
 
         if (!PREVIEWS.getBooleanValue()) return;
 
-        for (Pair<BlockPos, Vector4f> cube : MainPrinter.getInstance().cubes_to_render){
-            renderCube(cube, matrices, vertexConsumers, cameraX, cameraY, cameraZ);
-        }
+        if (MainPrinter.getInstance().currentSchematicWorld != null)
+            MainPrinter.getInstance().currentSchematicWorld.render(matrices, vertexConsumers, cameraX, cameraY, cameraZ);
         if (PREVIEW_ORIGIN.getBooleanValue())
             if (MainPrinter.getInstance().origin_preview != null)
                 renderBox(MainPrinter.getInstance().origin_preview, matrices, vertexConsumers, cameraX, cameraY, cameraZ);

@@ -16,7 +16,8 @@ public class ClientWorldMixin {
 
     @Inject(at = @At("RETURN"), method = "handleBlockUpdate")
     public void handleBlockUpdate(BlockPos pos, BlockState state, int flags, CallbackInfo ci){
-        MainPrinter.getInstance().updateBlock(pos, state);
+        if (MainPrinter.getInstance().currentSchematicWorld != null)
+            MainPrinter.getInstance().currentSchematicWorld.updateBlock(pos, state);
     }
 
 }

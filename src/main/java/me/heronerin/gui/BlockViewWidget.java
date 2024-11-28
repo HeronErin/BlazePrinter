@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.OverlayTexture;
+import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Pair;
 import net.minecraft.util.Util;
@@ -29,14 +30,15 @@ public class BlockViewWidget extends WidgetBase {
     public void render(int mouseX, int mouseY, boolean selected, DrawContext drawContext){
         double scaleFactor = MinecraftClient.getInstance().getWindow().getScaleFactor();
 
-        RenderUtils.drawOutline(x, y, width, height, 0xFFFFFFFF);
+
         RenderUtils.drawRect(x, y, width, height, 0x99_00_00_00);
+        RenderUtils.drawOutline(x, y, width, height, 0xFFFFFFFF);
 
         MatrixStack matrices = drawContext.getMatrices();
         matrices.push();
 
         // Translate the matrix master schematic render location
-        matrices.translate((float) (x + width/2), (float) (y + height/2), (float) (150));
+        matrices.translate((float) (x + width/2), (float) (y + 3*height/4), (float) (150));
 //
         // Apply scaling
         matrices.multiplyPositionMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));

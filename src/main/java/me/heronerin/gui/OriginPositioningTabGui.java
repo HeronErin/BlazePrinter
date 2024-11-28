@@ -13,24 +13,25 @@ import java.util.List;
 
 public class OriginPositioningTabGui extends ConfigGui.Tab{
     private static class GuiLayer extends GuiRenderLayerEditBase{
-        final private PositionEditorGUI.PositionEditCallback callback = (x, y, z) -> {
+        final private PositionEditorWidget.PositionEditCallback callback = (x, y, z) -> {
             BlockPos maybeOrigin = GuiLayer.this.originElement.toBlockPos();
             MainPrinter.getInstance().origin_preview = null;
 
             if (maybeOrigin == null) return;
             MainPrinter.getInstance().origin_preview = new Pair<>(maybeOrigin, Utils.ORIGIN_PREVIEW);
             MainPrinter.getInstance().orgin = maybeOrigin;
-            MainPrinter.getInstance().resetRenderBlocks();
+            if (MainPrinter.getInstance().currentSchematicWorld != null)
+                MainPrinter.getInstance().currentSchematicWorld.updateAllBlocks();
         };
 
         ConfigGui parent;
 
         // A loose version of origin that typically BUT NOT ALWAYS corresponds to the origin
-        private final PositionEditorGUI originElement;
+        private final PositionEditorWidget originElement;
         GuiLayer(ConfigGui parent){
             this.parent = parent;
             this.title = parent.getTitleString();
-            this.originElement = new PositionEditorGUI(null, null, null);
+            this.originElement = new PositionEditorWidget(null, null, null);
             if (MainPrinter.getInstance().orgin != null)
                 this.originElement.formBlockPos(MainPrinter.getInstance().orgin);
         }

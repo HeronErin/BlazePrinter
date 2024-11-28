@@ -15,6 +15,10 @@ import java.util.List;
 
 // Ok, there is an explanation of this I swear!!!
 // I just wanted a callback...
+
+// Usage: Use Utils.setStashedDropdownMenuCallback() to set the callback function
+//        then create a WidgetDropDownListMixin like normal. Now the callback is set
+
 @Mixin(value = WidgetDropDownList.class, remap = false)
 public abstract class WidgetDropDownListMixin<T extends Object>{
     @Shadow @Nullable
